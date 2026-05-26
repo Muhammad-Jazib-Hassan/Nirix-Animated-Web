@@ -2,6 +2,11 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Check, ArrowRight, ShieldCheck, Cpu, Database } from "lucide-react";
 
+// Import local assets so Vite processes them correctly for deployment
+import launchedAppCityImg from "../assets/images/launched_app_city_1779819623359.png";
+import metaverseBuggyImg from "../assets/images/metaverse_buggy_1779819596996.png";
+import innovativeNodesImg from "../assets/images/innovative_nodes_1779819644621.png";
+
 interface Tab {
   id: string;
   label: string;
@@ -18,7 +23,7 @@ export function HowItWorksSection() {
     {
       id: "launched",
       label: "Launched App",
-      imgSrc: "/src/assets/images/launched_app_city_1779819623359.png",
+      imgSrc: launchedAppCityImg,
       title: "Connecting Users with Seamless Neural Spatial Interfaces",
       description: "Lorem Ipsum is simply dummy text of the printing and typesetting individual has been the industry's standard dummy text ever since the when on this hour of unknown printer took a galley of type harden people.",
       bullets: [
@@ -30,7 +35,7 @@ export function HowItWorksSection() {
     {
       id: "marketplace",
       label: "Metaverse Marketplace",
-      imgSrc: "/src/assets/images/metaverse_buggy_1779819596996.png",
+      imgSrc: metaverseBuggyImg,
       title: "Made A New App Where You Will Get Part Taste Of Metaverse World Like",
       description: "Lorem Ipsum is simply dummy text of the printing and typesetting individual like has been the industry's standard dummy text ever since the when on this hour of unknown printer took a galley of type harden people.",
       bullets: [
@@ -42,7 +47,7 @@ export function HowItWorksSection() {
     {
       id: "innovative",
       label: "Innovative Approach",
-      imgSrc: "/src/assets/images/innovative_nodes_1779819644621.png",
+      imgSrc: innovativeNodesImg,
       title: "Next-Gen Protocol For Fluid Spatial Interaction Engines",
       description: "Lorem Ipsum is simply dummy text of the printing and typesetting individual has been the industry's standard dummy text ever since the when on this hour of unknown printer took a galley of type harden people.",
       bullets: [
