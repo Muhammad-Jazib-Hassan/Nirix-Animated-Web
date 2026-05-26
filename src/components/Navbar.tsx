@@ -7,10 +7,11 @@ interface NavbarProps {
   onJoinClick: () => void;
   onOpenAppClick: () => void;
   onBuyTokenClick: () => void;
+  activeTab: string;
+  setActiveTab: (tab: string) => void;
 }
 
-export function Navbar({ onJoinClick, onOpenAppClick, onBuyTokenClick }: NavbarProps) {
-  const [activeTab, setActiveTab] = useState<string>("Home");
+export function Navbar({ onJoinClick, onOpenAppClick, onBuyTokenClick, activeTab, setActiveTab }: NavbarProps) {
   const [isPagesDropdownOpen, setIsPagesDropdownOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -103,7 +104,7 @@ export function Navbar({ onJoinClick, onOpenAppClick, onBuyTokenClick }: NavbarP
                                   key={pi.name}
                                   onClick={() => {
                                     setIsPagesDropdownOpen(false);
-                                    alert(`Opening ${pi.name}...`);
+                                    setActiveTab(pi.name);
                                   }}
                                   className="flex items-start gap-3 p-3 rounded-lg text-left hover:bg-zinc-900/60 transition group cursor-pointer"
                                 >
@@ -208,7 +209,7 @@ export function Navbar({ onJoinClick, onOpenAppClick, onBuyTokenClick }: NavbarP
                           key={pi.name}
                           onClick={() => {
                             setIsMobileMenuOpen(false);
-                            alert(`Opening ${pi.name}...`);
+                            setActiveTab(pi.name);
                           }}
                           className="text-left text-sm text-zinc-500 hover:text-white transition"
                         >

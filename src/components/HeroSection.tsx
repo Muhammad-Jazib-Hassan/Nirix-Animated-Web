@@ -30,6 +30,13 @@ export function HeroSection({ onOpenAppClick, onBuyTokenClick }: HeroSectionProp
     }
   };
 
+  // Dynamically enforce slow motion playback (0.4x) on load / update
+  React.useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.playbackRate = 0.4;
+    }
+  }, [videoFit]);
+
   // Derive target opacities based on customization
   const getOverlayOpacity = () => {
     switch (overlayStyle) {
