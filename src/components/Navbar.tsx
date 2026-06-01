@@ -1,6 +1,19 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { ChevronDown, Menu, X, Rocket, Sparkles, Compass, ShieldCheck } from "lucide-react";
+import { 
+  ChevronDown, 
+  Menu, 
+  X, 
+  Rocket, 
+  Sparkles, 
+  Compass, 
+  ShieldCheck, 
+  Home, 
+  Info, 
+  Layers, 
+  Newspaper, 
+  MessageSquare 
+} from "lucide-react";
 import { NirixLogo } from "./NirixLogo";
 
 interface NavbarProps {
@@ -16,11 +29,11 @@ export function Navbar({ onJoinClick, onOpenAppClick, onBuyTokenClick, activeTab
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navItems = [
-    { name: "Home", type: "link" },
-    { name: "About", type: "link" },
-    { name: "Pages", type: "dropdown" },
-    { name: "News", type: "link" },
-    { name: "Contact Us", type: "link" },
+    { name: "Home", type: "link", icon: Home },
+    { name: "About", type: "link", icon: Info },
+    { name: "Pages", type: "dropdown", icon: Layers },
+    { name: "News", type: "link", icon: Newspaper },
+    { name: "Contact Us", type: "link", icon: MessageSquare },
   ];
 
   const pagesItems = [
@@ -45,7 +58,10 @@ export function Navbar({ onJoinClick, onOpenAppClick, onBuyTokenClick, activeTab
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
         
         {/* Brand Logo & Name */}
-        <div className="flex items-center cursor-pointer group">
+        <div 
+          onClick={() => handleNavItemClick("Home")}
+          className="flex items-center cursor-pointer group"
+        >
           <motion.div
             whileHover={{ rotate: 15, scale: 1.05 }}
             transition={{ type: "spring", stiffness: 300 }}
@@ -61,18 +77,24 @@ export function Navbar({ onJoinClick, onOpenAppClick, onBuyTokenClick, activeTab
         <nav className="hidden md:flex items-center gap-8">
           {navItems.map((item) => {
             const isActive = activeTab === item.name;
+            const Icon = item.icon;
 
             if (item.type === "dropdown") {
               return (
-                <div key={item.name} className="relative">
+                <div 
+                  key={item.name} 
+                  className="relative py-2"
+                  onMouseEnter={() => setIsPagesDropdownOpen(true)}
+                  onMouseLeave={() => setIsPagesDropdownOpen(false)}
+                >
                   <button
-                    onClick={() => handleNavItemClick(item.name)}
-                    onMouseEnter={() => setIsPagesDropdownOpen(true)}
-                    className={`flex items-center gap-1.5 text-[15px] font-medium tracking-wide transition-colors py-2 cursor-pointer ${
+                    onClick={() => setIsPagesDropdownOpen(!isPagesDropdownOpen)}
+                    className={`flex items-center gap-1.5 text-[15px] font-medium tracking-wide transition-colors cursor-pointer ${
                       isPagesDropdownOpen ? "text-[#B369FE]" : "text-zinc-400 hover:text-white"
                     }`}
                   >
-                    {item.name}
+                    <Icon className="w-4 h-4 text-zinc-500" />
+                    <span>{item.name}</span>
                     <ChevronDown
                       className={`w-4 h-4 transition-transform duration-300 ${
                         isPagesDropdownOpen ? "rotate-180 text-[#B369FE]" : "text-zinc-500"
@@ -82,49 +104,41 @@ export function Navbar({ onJoinClick, onOpenAppClick, onBuyTokenClick, activeTab
 
                   <AnimatePresence>
                     {isPagesDropdownOpen && (
-                      <>
-                        {/* Dropdown overlay background close element */}
-                        <div 
-                          className="fixed inset-0 z-30 cursor-default"
-                          onMouseEnter={() => setIsPagesDropdownOpen(false)}
-                        />
-                        <motion.div
-                          initial={{ opacity: 0, y: 15 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: 10 }}
-                          transition={{ duration: 0.2 }}
-                          className="absolute left-1/2 -translate-x-1/2 mt-3 w-80 bg-[#07070a] border border-zinc-800/80 rounded-xl p-3 shadow-2xl z-40"
-                          onMouseLeave={() => setIsPagesDropdownOpen(false)}
-                        >
-                          <div className="grid gap-1">
-                            {pagesItems.map((pi) => {
-                              const Icon = pi.icon;
-                              return (
-                                <button
-                                  key={pi.name}
-                                  onClick={() => {
-                                    setIsPagesDropdownOpen(false);
-                                    setActiveTab(pi.name);
-                                  }}
-                                  className="flex items-start gap-3 p-3 rounded-lg text-left hover:bg-zinc-900/60 transition group cursor-pointer"
-                                >
-                                  <div className="p-2 rounded-md bg-zinc-900 border border-zinc-800 text-zinc-400 group-hover:text-[#B369FE] group-hover:border-[#B369FE]/30 transition">
-                                    <Icon className="w-4 h-4" />
-                                  </div>
-                                  <div>
-                                    <h4 className="text-sm font-medium text-white group-hover:text-[#B369FE] transition">
-                                      {pi.name}
-                                    </h4>
-                                    <p className="text-xs text-zinc-500 mt-0.5">
-                                      {pi.desc}
-                                    </p>
-                                  </div>
-                                </button>
-                              );
-                            })}
-                          </div>
-                        </motion.div>
-                      </>
+                      <motion.div
+                        initial={{ opacity: 0, y: 15 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 10 }}
+                        transition={{ duration: 0.2 }}
+                        className="absolute left-1/2 -translate-x-1/2 mt-3 w-80 bg-[#07070a] border border-zinc-800/80 rounded-xl p-3 shadow-2xl z-45"
+                      >
+                        <div className="grid gap-1">
+                          {pagesItems.map((pi) => {
+                            const PiIcon = pi.icon;
+                            return (
+                              <button
+                                key={pi.name}
+                                onClick={() => {
+                                  setIsPagesDropdownOpen(false);
+                                  setActiveTab(pi.name);
+                                }}
+                                className="flex items-start gap-3 p-3 rounded-lg text-left hover:bg-zinc-900/60 transition group cursor-pointer"
+                              >
+                                <div className="p-2 rounded-md bg-zinc-900 border border-zinc-800 text-zinc-400 group-hover:text-[#B369FE] group-hover:border-[#B369FE]/30 transition">
+                                  <PiIcon className="w-4 h-4" />
+                                </div>
+                                <div>
+                                  <h4 className="text-sm font-medium text-white group-hover:text-[#B369FE] transition">
+                                    {pi.name}
+                                  </h4>
+                                  <p className="text-xs text-zinc-500 mt-0.5">
+                                    {pi.desc}
+                                  </p>
+                                </div>
+                              </button>
+                            );
+                          })}
+                        </div>
+                      </motion.div>
                     )}
                   </AnimatePresence>
                 </div>
@@ -135,10 +149,11 @@ export function Navbar({ onJoinClick, onOpenAppClick, onBuyTokenClick, activeTab
               <button
                 key={item.name}
                 onClick={() => handleNavItemClick(item.name)}
-                className={`relative text-[15px] font-medium tracking-wide transition-all py-2 cursor-pointer ${
+                className={`relative text-[15px] font-medium tracking-wide transition-all py-2 cursor-pointer flex items-center gap-1.5 ${
                   isActive ? "text-white" : "text-zinc-400 hover:text-white"
                 }`}
               >
+                <Icon className={`w-4 h-4 transition-colors ${isActive ? "text-[#B369FE]" : "text-zinc-500 group-hover:text-white"}`} />
                 <span>{item.name}</span>
                 {isActive && (
                   <motion.div
@@ -185,41 +200,49 @@ export function Navbar({ onJoinClick, onOpenAppClick, onBuyTokenClick, activeTab
             className="md:hidden bg-[#07070a] border-b border-zinc-900/90 text-white overflow-hidden"
           >
             <div className="px-6 py-6 flex flex-col gap-5">
-              {navItems.map((item) => (
-                <div key={item.name} className="flex flex-col">
-                  <button
-                    onClick={() => {
-                      if (item.name === "Pages") {
-                        setIsPagesDropdownOpen(!isPagesDropdownOpen);
-                      } else {
-                        handleNavItemClick(item.name);
-                      }
-                    }}
-                    className={`text-left text-lg font-medium py-1.5 ${
-                      activeTab === item.name ? "text-[#B369FE]" : "text-zinc-400"
-                    }`}
-                  >
-                    {item.name} {item.name === "Pages" && "▼"}
-                  </button>
+              {navItems.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <div key={item.name} className="flex flex-col">
+                    <button
+                      onClick={() => {
+                        if (item.name === "Pages") {
+                          setIsPagesDropdownOpen(!isPagesDropdownOpen);
+                        } else {
+                          handleNavItemClick(item.name);
+                        }
+                      }}
+                      className={`text-left text-lg font-medium py-1.5 flex items-center gap-2.5 ${
+                        activeTab === item.name ? "text-[#B369FE]" : "text-zinc-400"
+                      }`}
+                    >
+                      <Icon className="w-5 h-5 opacity-70" />
+                      <span>{item.name} {item.name === "Pages" && "▼"}</span>
+                    </button>
 
-                  {item.name === "Pages" && isPagesDropdownOpen && (
-                    <div className="pl-4 mt-2 mb-1 flex flex-col gap-3 border-l border-zinc-800">
-                      {pagesItems.map((pi) => (
-                        <button
-                          key={pi.name}
-                          onClick={() => {
-                            setIsMobileMenuOpen(false);
-                            setActiveTab(pi.name);
-                          }}
-                          className="text-left text-sm text-zinc-500 hover:text-white transition"
-                        >
-                          {pi.name}
-                        </button>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ))}
+                    {item.name === "Pages" && isPagesDropdownOpen && (
+                      <div className="pl-5 mt-2 mb-1 flex flex-col gap-3 border-l border-zinc-850">
+                        {pagesItems.map((pi) => {
+                          const PiIcon = pi.icon;
+                          return (
+                            <button
+                              key={pi.name}
+                              onClick={() => {
+                                setIsMobileMenuOpen(false);
+                                setActiveTab(pi.name);
+                              }}
+                              className="text-left text-sm text-zinc-500 hover:text-white transition flex items-center gap-2"
+                            >
+                              <PiIcon className="w-4 h-4 text-zinc-600" />
+                              <span>{pi.name}</span>
+                            </button>
+                          );
+                        })}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
 
               <div className="h-px bg-zinc-950 my-2" />
 

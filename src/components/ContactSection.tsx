@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Send, MapPin, Mail, Phone, Shield, Terminal, CheckCircle2, RefreshCw } from "lucide-react";
+import { SubpageBackgroundVideo } from "./SubpageBackgroundVideo";
+import { toast } from "../lib/toast";
 
 export function ContactSection() {
   const [formData, setFormData] = useState({
@@ -50,7 +52,7 @@ export function ContactSection() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.nodeName || !formData.commAddress || !formData.payload) {
-      alert("Please populate all crucial transmission channels.");
+      toast.warn("Validation Warning: Please populate all crucial transmission channels before dispatch.");
       return;
     }
 
@@ -72,6 +74,9 @@ export function ContactSection() {
 
   return (
     <section className="relative min-h-screen bg-black pt-36 pb-24 px-6 md:px-12 lg:px-24 overflow-hidden">
+      {/* Background Video Layer */}
+      <SubpageBackgroundVideo />
+
       {/* Ambient backgrounds */}
       <div className="absolute top-1/4 left-1/4 w-[450px] h-[450px] rounded-full bg-[#513FF5]/5 blur-[140px] pointer-events-none" />
       <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] rounded-full bg-[#B369FE]/4 blur-[160px] pointer-events-none" />

@@ -11,6 +11,7 @@ import {
   ArrowRight,
   Sparkles
 } from "lucide-react";
+import { toast } from "../lib/toast";
 
 interface FeatureCard {
   id: number;
@@ -250,14 +251,14 @@ export function FeaturesSection() {
               <div className="mt-8 flex justify-end gap-3.5 border-t border-zinc-900 pt-6">
                 <button
                   onClick={() => setSelectedFeature(null)}
-                  className="px-5 py-2.5 border border-zinc-800 hover:border-zinc-700 text-zinc-400 hover:text-white rounded-lg text-xs font-mono uppercase tracking-widest transition cursor-pointer"
+                  className="px-5 py-2.5 bg-[#14141d] border border-zinc-800 hover:border-[#B369FE]/40 text-zinc-400 hover:text-white rounded-lg text-xs font-mono uppercase tracking-widest transition cursor-pointer"
                 >
                   Close Detail
                 </button>
                 <button
                   onClick={() => {
                     setSelectedFeature(null);
-                    alert(`Interfacing: Connecting direct client socket payload for physical ${selectedFeature.title} modules...`);
+                    toast.success(`Interfacing Socket: Initializing parallel transmission pipe for physical ${selectedFeature.title} module clusters.`);
                   }}
                   className="px-5 py-2.5 bg-gradient-to-r from-[#513FF5] to-[#B369FE] text-white rounded-lg text-xs font-mono uppercase tracking-widest transition cursor-pointer hover:opacity-95 shadow-lg shadow-[#513FF5]/20"
                 >

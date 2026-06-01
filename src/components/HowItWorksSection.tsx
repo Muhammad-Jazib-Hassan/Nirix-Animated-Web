@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Check, ArrowRight, ShieldCheck, Cpu, Database } from "lucide-react";
+import { toast } from "../lib/toast";
 
 // Import local assets so Vite processes them correctly for deployment
 import launchedAppCityImg from "../assets/images/launched_app_city_1779819623359.png";
@@ -175,7 +176,7 @@ export function HowItWorksSection() {
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.98 }}
-                    onClick={() => alert(`Simulating connection sequence for the ${activeTab.label} suite... Gateway configured.`)}
+                    onClick={() => toast.info(`Gateway Sync: Connection sequence initialized for the ${activeTab.label} suite.`)}
                     className="px-7 py-3 bg-gradient-to-r from-[#513FF5] to-[#B369FE] text-white hover:opacity-95 font-medium rounded-lg text-sm sm:text-base tracking-wider transition-all shadow-[0_4px_15px_rgba(81,63,245,0.25)] hover:shadow-[0_4px_20px_rgba(179,105,254,0.4)] flex items-center gap-2.5 cursor-pointer"
                   >
                     <span>Read More</span>

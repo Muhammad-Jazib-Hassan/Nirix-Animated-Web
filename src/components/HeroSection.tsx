@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Sliders, Maximize2, Minimize2, Eye, LayoutGrid } from "lucide-react";
+import { SeamlessYoYoVideo } from "./SeamlessYoYoVideo";
 
 interface HeroSectionProps {
   onOpenAppClick: () => void;
@@ -9,33 +10,13 @@ interface HeroSectionProps {
 
 export function HeroSection({ onOpenAppClick, onBuyTokenClick }: HeroSectionProps) {
   // Split titles for neat entry transitions
-  const line1 = "Make Your Stuning";
+  const line1 = "Make Your Stunning";
   const line2 = "New Metaverse";
-
-  // Ref to the video element for fine-tuned synchronization
-  const videoRef = useRef<HTMLVideoElement>(null);
 
   // Interactive video adjustment parameters for the user's ultimate customization
   const [videoFit, setVideoFit] = useState<"cover" | "contain">("cover");
   const [overlayStyle, setOverlayStyle] = useState<"vivid" | "balanced" | "cinematic">("balanced");
   const [showConfigPanel, setShowConfigPanel] = useState(false);
-
-  // Custom handler to limit play to first 2 seconds and loop smoothly
-  const handleTimeUpdate = (e: React.SyntheticEvent<HTMLVideoElement>) => {
-    const video = e.currentTarget;
-    if (video.currentTime >= 2.0) {
-      video.currentTime = 0;
-      // Re-trigger play in case browser stalls on seek
-      video.play().catch(() => {});
-    }
-  };
-
-  // Dynamically enforce slow motion playback (0.4x) on load / update
-  React.useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.playbackRate = 0.4;
-    }
-  }, [videoFit]);
 
   // Derive target opacities based on customization
   const getOverlayOpacity = () => {
@@ -53,31 +34,15 @@ export function HeroSection({ onOpenAppClick, onBuyTokenClick }: HeroSectionProp
 
   return (
     <section className="relative min-h-screen flex flex-col justify-center px-6 md:px-12 lg:px-24 overflow-hidden pt-36 pb-20">
-      {/* Background Video with dynamic fit classes and hardware acceleration for maximum quality rendering */}
-      <video
-        ref={videoRef}
-        key={videoFit} // Forces reload on state change for clean rendering transition
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="auto"
-        onTimeUpdate={handleTimeUpdate}
+      {/* Background Video using Seamless YoYo (Ping-Pong) looping algorithm for zero jerk and extremely smooth visuals */}
+      <SeamlessYoYoVideo
+        key={videoFit}
+        speed={1.0}
+        maxTime={2.0}
         className={`absolute inset-0 w-full h-full ${
           videoFit === "cover" ? "object-cover" : "object-contain bg-zinc-950"
         } pointer-events-none transition-all duration-700 ease-out z-0`}
-        style={{
-          WebkitBackfaceVisibility: "hidden",
-          backfaceVisibility: "hidden",
-          transform: "translate3d(0,0,0)",
-        }}
-      >
-        <source
-          src="https://res.cloudinary.com/dowrdytcc/video/upload/v1779818794/WhatsApp_Video_2026-05-26_at_9.47.34_PM_k9tmq0.mp4"
-          type="video/mp4"
-        />
-        Your browser does not support the video tag.
-      </video>
+      />
 
       {/* 
         Dynamic Contrast Overlay Engine:

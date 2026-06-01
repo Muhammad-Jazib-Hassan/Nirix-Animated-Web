@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Search, Sliders, Calendar, User, Eye, X, ArrowRight, Rss, ArrowLeft } from "lucide-react";
+import { SubpageBackgroundVideo } from "./SubpageBackgroundVideo";
+import { toast } from "../lib/toast";
 
 interface Article {
   id: number;
@@ -94,6 +96,9 @@ export function NewsSection() {
 
   return (
     <section className="relative min-h-screen bg-black pt-36 pb-24 px-6 md:px-12 lg:px-24 overflow-hidden">
+      {/* Background Video Layer */}
+      <SubpageBackgroundVideo />
+
       {/* Background Ambience styling */}
       <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] rounded-full bg-[#513FF5]/5 blur-[150px] pointer-events-none" />
       <div className="absolute bottom-1/4 left-1/4 w-[500px] h-[500px] rounded-full bg-[#B369FE]/4 blur-[160px] pointer-events-none" />
@@ -294,7 +299,7 @@ export function NewsSection() {
 
                   <button
                     onClick={() => {
-                      alert(`Fetching comprehensive raw system documentation from sovereign filesystems for node: "${selectedArticle.title}"...`);
+                      toast.info(`Query dispatched: Fetching raw system documentation vectors for node "${selectedArticle.title}". Please standby...`);
                     }}
                     className="px-5 py-2.5 bg-gradient-to-r from-[#513FF5] to-[#B369FE] text-white hover:opacity-95 font-medium rounded-lg text-xs font-mono uppercase tracking-widest transition cursor-pointer shadow-lg shadow-[#513FF5]/10"
                   >

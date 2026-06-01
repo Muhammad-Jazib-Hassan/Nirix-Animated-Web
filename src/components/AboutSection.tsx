@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Sparkles, Terminal, Cpu, Database, Network, Atom, Calendar, ArrowRight } from "lucide-react";
+import { SubpageBackgroundVideo } from "./SubpageBackgroundVideo";
 
 interface Milestone {
   year: string;
@@ -64,6 +65,9 @@ export function AboutSection() {
 
   return (
     <section className="relative min-h-screen bg-black pt-36 pb-24 px-6 md:px-12 lg:px-24 overflow-hidden">
+      {/* Background Video Layer */}
+      <SubpageBackgroundVideo />
+
       {/* Background decoration */}
       <div className="absolute top-1/4 left-1/12 w-[500px] h-[500px] rounded-full bg-[#513FF5]/5 blur-[150px] pointer-events-none" />
       <div className="absolute bottom-1/4 right-1/12 w-[600px] h-[600px] rounded-full bg-[#B369FE]/5 blur-[180px] pointer-events-none" />

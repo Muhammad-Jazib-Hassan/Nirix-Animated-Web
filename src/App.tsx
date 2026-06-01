@@ -9,6 +9,8 @@ import { NewsSection } from "./components/NewsSection";
 import { ContactSection } from "./components/ContactSection";
 import { VirtualGallery, EcosystemHub, CreatorStudio, SecurityAudit } from "./components/PagesSections";
 import { JoinModal, BuyTokenModal, OpenAppModal } from "./components/InteractiveModals";
+import { SubpageBackgroundVideo } from "./components/SubpageBackgroundVideo";
+import { CyberToast } from "./components/CyberToast";
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<string>("Home");
@@ -82,9 +84,10 @@ export default function App() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
-            className="pt-36 pb-24 px-6 md:px-12 lg:px-24"
+            className="relative min-h-screen bg-black pt-36 pb-24 px-6 md:px-12 lg:px-24 overflow-hidden"
           >
-            <div className="max-w-7xl mx-auto">
+            <SubpageBackgroundVideo />
+            <div className="max-w-7xl mx-auto relative z-10">
               <VirtualGallery />
             </div>
           </motion.div>
@@ -97,9 +100,10 @@ export default function App() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
-            className="pt-36 pb-24 px-6 md:px-12 lg:px-24"
+            className="relative min-h-screen bg-black pt-36 pb-24 px-6 md:px-12 lg:px-24 overflow-hidden"
           >
-            <div className="max-w-7xl mx-auto">
+            <SubpageBackgroundVideo />
+            <div className="max-w-7xl mx-auto relative z-10">
               <EcosystemHub />
             </div>
           </motion.div>
@@ -112,9 +116,10 @@ export default function App() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
-            className="pt-36 pb-24 px-6 md:px-12 lg:px-24"
+            className="relative min-h-screen bg-black pt-36 pb-24 px-6 md:px-12 lg:px-24 overflow-hidden"
           >
-            <div className="max-w-7xl mx-auto">
+            <SubpageBackgroundVideo />
+            <div className="max-w-7xl mx-auto relative z-10">
               <CreatorStudio />
             </div>
           </motion.div>
@@ -127,9 +132,10 @@ export default function App() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
-            className="pt-36 pb-24 px-6 md:px-12 lg:px-24"
+            className="relative min-h-screen bg-black pt-36 pb-24 px-6 md:px-12 lg:px-24 overflow-hidden"
           >
-            <div className="max-w-7xl mx-auto">
+            <SubpageBackgroundVideo />
+            <div className="max-w-7xl mx-auto relative z-10">
               <SecurityAudit />
             </div>
           </motion.div>
@@ -179,6 +185,8 @@ export default function App() {
         isOpen={isOpenAppOpen} 
         onClose={() => setIsOpenAppOpen(false)} 
       />
+      
+      <CyberToast />
     </div>
   );
 }

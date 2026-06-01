@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { X, Sparkles, Send, Coins, Compass, Globe, Info, CreditCard, ChevronRight, Activity, Cpu } from "lucide-react";
+import { toast } from "../lib/toast";
 
 interface ModalProps {
   isOpen: boolean;
@@ -409,7 +410,7 @@ export function OpenAppModal({ isOpen, onClose }: ModalProps) {
                       <h4 className="text-white mt-3 font-semibold text-sm">Prism Sector Lobby</h4>
                       <p className="text-zinc-500 text-xs mt-1">Decentralized 3D lobby hosting live audio channels & virtual spaces.</p>
                       <button
-                        onClick={() => alert("Simulation: Launching lobby 3D rendering container... Please stand by.")}
+                        onClick={() => toast.info("Sector Launch: Initializing Prism Sector Lobby 3D rendering container. Preparing graphics shaders...")}
                         className="mt-4 w-full py-1.5 bg-zinc-900 hover:bg-[#513FF5]/90 text-zinc-300 hover:text-white transition text-xs font-medium rounded-md cursor-pointer border border-zinc-800"
                       >
                         Launch sector view
@@ -429,7 +430,7 @@ export function OpenAppModal({ isOpen, onClose }: ModalProps) {
                       <h4 className="text-white mt-3 font-semibold text-sm">Cybernetic Gallery</h4>
                       <p className="text-zinc-500 text-xs mt-1">Auctioning spatial layout models, token lands & virtual architecture.</p>
                       <button
-                        onClick={() => alert("Simulation: Connecting high-throughput NFT storage cluster...")}
+                        onClick={() => toast.info("Sector Sync: Connecting decentralized high-throughput NFT storage clusters for Cybernetic Gallery...")}
                         className="mt-4 w-full py-1.5 bg-zinc-900 hover:bg-[#513FF5]/90 text-zinc-300 hover:text-white transition text-xs font-medium rounded-md cursor-pointer border border-zinc-800"
                       >
                         Launch sector view

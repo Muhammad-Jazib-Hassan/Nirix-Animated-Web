@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <radialGradient id="glow-cyan" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00f0ff" stop-opacity="1" />
+      <stop offset="100%" stop-color="#00a8ff" stop-opacity="0.8" />
+    </radialGradient>
+    <radialGradient id="glow-magenta" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ec4899" stop-opacity="1" />
+      <stop offset="100%" stop-color="#db2777" stop-opacity="0.8" />
+    </radialGradient>
+    <radialGradient id="glow-purple" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#a855f7" stop-opacity="1" />
+      <stop offset="100%" stop-color="#7e22ce" stop-opacity="0.8" />
+    </radialGradient>
+    <radialGradient id="glow-blue" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="1" />
+      <stop offset="100%" stop-color="#1d4ed8" stop-opacity="0.8" />
+    </radialGradient>
+  </defs>
+
+  {/* Ambient Dark Circle Background to frame the logo perfectly in both light/dark tabs */}
+  <circle cx="50" cy="50" r="48" fill="#06060c" stroke="#18181b" stroke-width="2"/>
+
+  {/* Outer Circle of Dots (Radius: 28) */}
+  <circle cx="50" cy="22" r="4.5" fill="url(#glow-purple)" />
+  <circle cx="64" cy="25.8" r="4.5" fill="url(#glow-blue)" />
+  <circle cx="74.2" cy="35.8" r="4.5" fill="url(#glow-cyan)" />
+  <circle cx="78" cy="50" r="4.5" fill="url(#glow-cyan)" />
+  <circle cx="74.2" cy="64.2" r="4.5" fill="url(#glow-blue)" />
+  <circle cx="64" cy="74.2" r="4.5" fill="url(#glow-purple)" />
+  <circle cx="50" cy="78" r="4.5" fill="url(#glow-magenta)" />
+  <circle cx="36" cy="74.2" r="4.5" fill="url(#glow-magenta)" />
+  <circle cx="25.8" cy="64.2" r="4.5" fill="url(#glow-purple)" />
+  <circle cx="22" cy="50" r="4.5" fill="url(#glow-cyan)" />
+  <circle cx="25.8" cy="35.8" r="4.5" fill="url(#glow-cyan)" />
+  <circle cx="36" cy="25.8" r="4.5" fill="url(#glow-blue)" />
+
+  {/* Inner Circle of Dots (Radius: 15) */}
+  <circle cx="50" cy="35" r="3.5" fill="url(#glow-blue)" />
+  <circle cx="60.6" cy="39.4" r="3.5" fill="url(#glow-purple)" />
+  <circle cx="65" cy="50" r="3.5" fill="url(#glow-magenta)" />
+  <circle cx="60.6" cy="60.6" r="3.5" fill="url(#glow-magenta)" />
+  <circle cx="50" cy="65" r="3.5" fill="url(#glow-purple)" />
+  <circle cx="39.4" cy="60.6" r="3.5" fill="url(#glow-blue)" />
+  <circle cx="35" cy="50" r="3.5" fill="url(#glow-cyan)" />
+  <circle cx="39.4" cy="39.4" r="3.5" fill="url(#glow-cyan)" />
+
+  {/* Master Center Dot */}
+  <circle cx="50" cy="50" r="3.2" fill="#ffffff" opacity="0.9" />
+</svg>

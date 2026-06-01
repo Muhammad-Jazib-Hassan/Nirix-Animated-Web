@@ -18,6 +18,7 @@ import {
   Search,
   ArrowRight
 } from "lucide-react";
+import { toast } from "../lib/toast";
 
 // ==========================================
 // 1. VIRTUAL GALLERY INTERACTIVE COMPONENT
@@ -199,7 +200,7 @@ export function VirtualGallery() {
                     Close Block
                   </button>
                   <button
-                    onClick={() => alert(`Broadcasting 3D model: loading full vertex data shader sequence stream...`)}
+                    onClick={() => toast.success(`Broadcasting item "${selectedItem.name}": dynamic 3D vertex and material shader loaded successfully.`)}
                     className="px-5 py-2 text-white bg-gradient-to-r from-[#513FF5] to-[#B369FE] rounded-lg text-xs font-mono uppercase tracking-widest transition cursor-pointer shadow-lg hover:opacity-95"
                   >
                     Load in Workspace
@@ -321,7 +322,7 @@ export function EcosystemHub() {
 
           <div className="pt-4 flex justify-end">
             <button
-              onClick={() => alert(`Triggering hard reboot protocol for sequence ID: ${current.id}... System responsive.`)}
+              onClick={() => toast.success(`Diagnostics Protocol: Hard reboot dispatched for subnet module ID "${current.id}". System online.`)}
               className="px-5 py-2.5 border border-zinc-800 hover:border-[#B369FE]/40 text-xs font-mono uppercase text-zinc-400 hover:text-[#B369FE] rounded-lg tracking-widest transition cursor-pointer"
             >
               Forced Synchronous Restart
@@ -445,7 +446,7 @@ export function CreatorStudio() {
 
           <div className="pt-2">
             <button
-              onClick={() => alert(`Compiling geometry file content: Shape="${shape}" Color="${wireColor}" Nodes=${nodeCount}... Succesfully exported into workspace!`)}
+              onClick={() => toast.success(`Mesh Compiler: Shape="${shape.toUpperCase()}" Color="${wireColor}" Nodes=${nodeCount} compiled and exported to your custom workspace.`)}
               className="w-full py-3 bg-gradient-to-r from-[#513FF5] to-[#B369FE] text-white rounded-lg text-xs font-mono uppercase tracking-widest font-bold shadow-lg transition cursor-pointer hover:opacity-95"
             >
               Compile & Export Asset
@@ -570,7 +571,7 @@ export function SecurityAudit() {
         if (prev >= 100) {
           clearInterval(interval);
           setIsAuditing(false);
-          alert("Smart contract path verified. Zero highintensity warning flags registered. Diagnostics compile matches 100%.");
+          toast.success("Audit Complete: Smart contract pathways verified. Zero critical warning flags registered. Security matches 100%.");
           return 100;
         }
         return prev + 10;
